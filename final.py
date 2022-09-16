@@ -165,7 +165,13 @@ def to_cumulative_delayed(ticks, qb):
                     # formatting the strings as required
                     returnString = all_symbols[symbol]["latest_time"] + ","  + symbol + "," + str(all_symbols[symbol]["quantity"]) + "," + str(all_symbols[symbol]["notional"])
                     # putting the final formatted string in the final list
-                    final.append(returnString)        
+                    isInserted = False
+                    for i in range(len(final)):
+                        if final[i][:5] == all_symbols[symbol]["latest_time"]:
+                            final[i] = returnString
+                            isInserted = True
+                    if isInserted == False:
+                        final.append(returnString)         
 
         except:
 
@@ -190,7 +196,13 @@ def to_cumulative_delayed(ticks, qb):
                     # formatting the strings as required
                     returnString = all_symbols[symbol]["latest_time"] + ","  + symbol + "," + str(all_symbols[symbol]["quantity"]) + "," + str(all_symbols[symbol]["notional"])
                     # putting the final formatted string in the final list
-                    final.append(returnString)
+                    isInserted = False
+                    for i in range(len(final)):
+                        if final[i][:5] == all_symbols[symbol]["latest_time"]:
+                            final[i] = returnString
+                            isInserted = True
+                    if isInserted == False:
+                        final.append(returnString)  
 
         
     # returning the final answer
